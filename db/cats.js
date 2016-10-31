@@ -3,9 +3,14 @@ var config = require('../knexfile').development
 var knex = Knex(config)
 
 module.exports = {
-  getAllCats
+  getAllCats,
+  getCatById
 }
 
 function getAllCats() {
   return knex('cats')
+}
+
+function getCatById(id) {
+  return knex('cats').where('id', id)
 }

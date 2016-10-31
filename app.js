@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var cats = require('./routes/cats');
+var catsDB = require('./db/cats')
 
 var app = express();
 
@@ -24,6 +25,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/cats', cats);
+
+app.get('/cats/:id/', function(req, res){
+  catsDB.getCatById(req.params.id)
+    .then(function(catFromDB){
+      res.render('cats', {cat: catFromDB})
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+})
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
