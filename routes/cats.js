@@ -38,14 +38,12 @@ router.get('/edit/:id', function (req, res) {
 })
 
 router.post('/:id', function(req, res){
-  console.log("req.body isss", req.body);
   var editedCat = {
     id: req.params.id,
     name: req.body.name,
     url: req.body.image,
     story: req.body.life_story
   }
-  console.log("id", editedCat.id);
   catsDB.updateCat(editedCat)
     .then(function(editedCat){
       console.log("the editedCat is:", editedCat)
@@ -53,7 +51,8 @@ router.post('/:id', function(req, res){
     .catch(function(error){
       console.log(error)
     })
-  res.redirect('/cats')
+  var catURL = '/cats/' + String(req.params.id)
+  res.redirect(catURL)
 })
 
 router.post('/', function(req, res){
