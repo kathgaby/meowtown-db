@@ -31,7 +31,20 @@ router.get('/:id/', function(req, res){
 
 router.post('/', function(req, res){
   console.log(req.body);
-  // res.render('newCat')
+  var newCat = {
+    name: req.body.name,
+    url: req.body.image,
+    story: req.body.life_story,
+    lives: 100
+  }
+  catsDB.createNewCat(newCat)
+    .then(function(newCat){
+      console.log(newCat)
+    })
+    .catch(function(error){
+      console.log(error)
+    })
+  res.redirect('/cats')
 })
 
 module.exports = router;
