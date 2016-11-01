@@ -27,6 +27,16 @@ router.get('/:id/', function(req, res){
     })
 })
 
+router.get('/edit/:id', function (req, res) {
+  catsDB.getCatById(Number(req.params.id))
+  .then(function(catsFromDB){
+    res.render('editcat', catsFromDB[0])
+  })
+  .catch(function(error){
+    console.log(error);
+  })
+})
+
 router.post('/', function(req, res){
   var newCat = {
     name: req.body.name,
