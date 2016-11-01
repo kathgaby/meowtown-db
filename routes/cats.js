@@ -18,10 +18,8 @@ router.get('/new/', function(req, res){
 })
 
 router.get('/:id/', function(req, res){
-  // console.log('This is req.params.id', req.params.id);
   catsDB.getCatById(Number(req.params.id))
     .then(function(catsFromDB){
-      console.log(catsFromDB[0]);
       res.render('showCat', catsFromDB[0])
     })
     .catch(function(error){
@@ -30,7 +28,6 @@ router.get('/:id/', function(req, res){
 })
 
 router.post('/', function(req, res){
-  console.log(req.body);
   var newCat = {
     name: req.body.name,
     url: req.body.image,
