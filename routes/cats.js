@@ -13,6 +13,10 @@ router.get('/', function(req, res, next) {
     })
 });
 
+router.get('/new/', function(req, res){
+  res.render('newCat')
+})
+
 router.get('/:id/', function(req, res){
   // console.log('This is req.params.id', req.params.id);
   catsDB.getCatById(Number(req.params.id))
@@ -23,6 +27,11 @@ router.get('/:id/', function(req, res){
     .catch(function(error){
       console.log(error);
     })
+})
+
+router.post('/', function(req, res){
+  console.log(req.body);
+  // res.render('newCat')
 })
 
 module.exports = router;
