@@ -5,7 +5,8 @@ var knex = Knex(config)
 module.exports = {
   getAllCats,
   getCatById,
-  createNewCat
+  createNewCat,
+  updateCat
 }
 
 function getAllCats() {
@@ -18,4 +19,9 @@ function getCatById(id) {
 
 function createNewCat(catObject){
   return knex('cats').insert(catObject)
+}
+
+function updateCat(catObject) {
+  return knex('cats').where('id', catObject.id)
+          .update(catObject)
 }
