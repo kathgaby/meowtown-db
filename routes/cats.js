@@ -13,4 +13,16 @@ router.get('/', function(req, res, next) {
     })
 });
 
+router.get('/:id/', function(req, res){
+  // console.log('This is req.params.id', req.params.id);
+  catsDB.getCatById(Number(req.params.id))
+    .then(function(catsFromDB){
+      console.log(catsFromDB[0]);
+      res.render('showCat', catsFromDB[0])
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+})
+
 module.exports = router;
