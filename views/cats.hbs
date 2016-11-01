@@ -1,9 +1,18 @@
 <h1>Welcome to Miautown</h1>
+
+<nav>
+  <a href="/cats">Home</a> /
+  <a class="link" href="/cats/new">generate cat</a> /
+  <a class="link" href="/cats/help">wuuut?</a> /
+  <!-- <a class="link" href="/cats/{{id}}/edit">edit</a> -->
+</nav>
+
+
 <ul>
   {{#each cats}}
     <li>
       <h2><span class="life-count">{{lives}}</span> Hi! My name is: {{name}}</h2>
-      <img src="{{url}}" alt="catPic" />
+      <a href="/cats/{{id}}"><img src="{{url}}" alt="catPic" /></a>
     </li>
   {{/each}}
 </ul>
