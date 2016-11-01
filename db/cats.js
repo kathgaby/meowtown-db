@@ -22,6 +22,5 @@ function createNewCat(catObject){
 }
 
 function updateCat(catObject) {
-  return knex('cats').where('id', catObject.id)
-          .update(catObject)
+  return knex('cats').where('id', catObject.id).update(catObject)
 }
