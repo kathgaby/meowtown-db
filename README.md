@@ -1,2 +1,1 @@
-# meowtown-db
-Meowtown made with database
+Meowtown made with database - the Spanish cats edition.
